@@ -1,8 +1,12 @@
-name: Java
+name: Q2 Java Build
+
+on:
+  pull_request:
+    branches:
+      - 'develop'
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -19,3 +23,9 @@ jobs:
       - name: Build
         run: mvn -B compile
 
+  testes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Testes
+        run: mvn test
