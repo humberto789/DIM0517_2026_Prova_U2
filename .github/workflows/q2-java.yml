@@ -2,13 +2,10 @@ name: Q2 Java Build
 
 on:
   pull_request:
-    branches:
-    - 'develop'
-  merge_group:
     types:
-    - 'checks_requested'
+      - closed
     branches:
-      - 'develop'
+      - develop
 
 jobs:
   build:
