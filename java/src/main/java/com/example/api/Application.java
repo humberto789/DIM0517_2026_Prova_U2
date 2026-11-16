@@ -17,7 +17,7 @@ public class Application {
 
     @GetMapping("/hello")
     public Map<String, String> hello() {
-        return Map.of("message", "Hello, World! teste Q1");
+        return Map.of("message", "Hello, World! testes Q1");
     }
 
     @GetMapping("/healthy")
