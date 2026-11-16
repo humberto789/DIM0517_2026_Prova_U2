@@ -3,7 +3,7 @@ name: Q2 Java Build
 on:
   pull_request:
     types:
-      - closed
+      - opened
     branches:
       - develop
 
