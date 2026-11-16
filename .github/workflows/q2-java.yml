@@ -35,5 +35,6 @@ jobs:
           distribution: temurin
           java-version: "21"
           cache: maven
-      - name: Testes
-        run: mvn test
+
+      - name: Run tests
+        run: mvn --batch-mode --update-snapshots verify
