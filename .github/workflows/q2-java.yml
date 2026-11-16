@@ -1,9 +1,9 @@
-name: Q2 Java Build
+name: Q2 Java Testes
 
 on:
   pull_request:
     types:
-      - opened
+      - closed
     branches:
       - develop
 
