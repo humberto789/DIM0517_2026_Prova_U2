@@ -1,4 +1,4 @@
-name: Java
+name: Q1 Java Build
 
 on:
   push:
@@ -10,6 +10,11 @@ on:
       - 'java/pom.xml'
 
 jobs:
+  saudacao:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Rodando Q1
+    run: echo "Q1 rodando, ${{ github.actor }}!"
   build:
     runs-on: ubuntu-latest
     defaults:
