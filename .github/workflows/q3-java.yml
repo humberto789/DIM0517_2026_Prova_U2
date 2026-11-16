@@ -1,4 +1,4 @@
-name: Java
+name: Q3 Java Tags build
 
 on:
   pull_request:
@@ -8,22 +8,32 @@ on:
       - develop
 
 jobs:
-  build:
+  create-tag:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    defaults:
-      run:
-        working-directory: java
-    steps:
-      - uses: actions/checkout@v4
 
-      - uses: actions/setup-java@v4
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configurar Java
+        uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "21"
           cache: maven
 
-      - name: Build
-        run: mvn -B compile
+      - name: Build e testes
+        run: mvn --batch-mode --update-snapshots verify
+
+      - name: Tag
+        if: ${{ success() && github.event_name == 'push' }}
+        env:
+          TAG: build-${{ github.run_id }}
+        run: |
+          git config user.name "Humberto Vitalino"
+          git config user.email "humbertovitalino1@gmail.com"
+          git tag "$TAG"
+          git push origin "$TAG"
 
