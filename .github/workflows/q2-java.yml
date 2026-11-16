@@ -3,30 +3,16 @@ name: Q2 Java Build
 on:
   pull_request:
     types:
-      - closed
+      - opened
     branches:
       - develop
 
 jobs:
-  build:
+  testes:
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: java
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: "21"
-          cache: maven
-
-      - name: Build
-        run: mvn -B compile
-
-  testes:
-    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
