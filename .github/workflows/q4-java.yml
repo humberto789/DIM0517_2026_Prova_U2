@@ -1,7 +1,10 @@
-name: Java
+name: Q4 Java Docker
+
+on:
+  workflow_dispatch:
 
 jobs:
-  build:
+  build-test-and-run:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -11,11 +14,12 @@ jobs:
         with:
           ref: main
 
-      - uses: actions/setup-java@v4
+      - name: Configurar Java
+        uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "21"
           cache: maven
 
-      - name: Build
-        run: mvn -B compile
+      - name: Build e testes
+        run: mvn --batch-mode --update-snapshots verify

@@ -3,7 +3,7 @@ name: Q3 Java Tags build
 on:
   pull_request:
     types:
-      - opened
+      - closed
     branches:
       - develop
 
@@ -38,4 +38,3 @@ jobs:
           git config user.email "humbertovitalino1@gmail.com"
           git tag "$TAG"
           git push origin "$TAG"
-
